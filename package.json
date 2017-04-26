@@ -1,0 +1,26 @@
+{
+  "name": "private",
+  "version": "1.0.0",
+  "description": "private-inherit",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "private-inherit"
+  ],
+  "author": "jinlei",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "express": "^4.15.2",
+    "webpack": "^2.4.1",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-hot-middleware": "^2.18.0"
+  },
+  "dependencies": {
+    "jade": "^1.11.0"
+  }
+}
