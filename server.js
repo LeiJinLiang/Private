@@ -6,7 +6,18 @@ var config = require('./webpack.config')
 var app = new (require('express'))()
 var port = 3000
 var compiler = webpack(config)
+const log4js = require('log4js');
+log4js.configure({
+    appenders: [
+        { type: 'console' },
+        { type: 'file', filename: 'cheese.log', category: 'cheese' }
+    ]
+});
 
+const logger = log4js.getLogger('cheese');
+logger.setLevel('INFO');
+
+app.use(log4js.connectLogger(logger, { level: log4js.levels.INFO }));
 app.use(webpackDevMiddleware(compiler,{ noInfo : true, publicPath : config.output.publicPath}))
 app.use(webpackHotMiddleware(compiler))
 
