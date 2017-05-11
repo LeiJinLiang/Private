@@ -1,35 +1,46 @@
-var path = require('path')
-var webpack = require('webpack')
-var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+'use strict'
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+    devtool : 'eval-source-map',
     entry : [
-        'webpack-hot-middleware/client',
-        './main.js'
+        'webpack-hot-middleware/client?reload=true',
+        path.join(__dirname,'app/main.js')
     ],
     output : {
-        path: __dirname + '/assets/',
-        publicPath: "/assets/",
-        filename: 'bundle.js'
+        path : path.join(__dirname, '/dist/'),
+        filename : '[name].js',
+        publicPath : '/'
     },
     plugins : [
+        new HtmlWebpackPlugin({
+            template: 'app/index.tpl.html',
+            inject: 'body',
+            filename: 'index.html'
+        }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new uglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
         })
     ],
-    module : {
-        loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader', // 'babel-loader' is also a legal name to reference
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+                "presets": ["react", "es2015", "stage-0", "react-hmre"]
             }
-        ]
+        }, {
+            test: /\.json?$/,
+            loader: 'json'
+        }, {
+            test: /\.css$/,
+            loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+        }]
     }
-}
+};
