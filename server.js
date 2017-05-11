@@ -1,14 +1,15 @@
 const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
+const compression = require('compression')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./webpack.config.js')
 const isDeveloping = process.env.NODE_ENV !== 'production'
-const port =isDeveloping ? 3000 : process.env.PORT
+const port =isDeveloping ? 3000 : 3001
 const app = express()
 
-if(isDeveloping && false){
+if(isDeveloping){
     const compiler = webpack(config)
     const middleware = webpackMiddleware(compiler,{
         publicPath : config.output.publicPath,
@@ -29,6 +30,7 @@ if(isDeveloping && false){
         res.end()
     })
 }else {
+    app.use(compression())
     app.use(express.static(__dirname + '/dist'))
     app.get('*',(req,res)=>{
         res.sendFile(path.join(__dirname, 'dist/index.html'))

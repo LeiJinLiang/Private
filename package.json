@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors"
+    "build": "rm -rf dist && env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors && env NODE_ENV=production node server.js"
   },
   "keywords": [
     "private-inherit"
@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "compression": "^1.6.2",
-    "jade": "^1.11.0",
     "log4js": "^1.1.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
