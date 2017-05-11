@@ -6,6 +6,7 @@ var config = require('./webpack.config')
 var app = new (require('express'))()
 var port = 3000
 var compiler = webpack(config)
+var compression = require('compression')
 const log4js = require('log4js');
 log4js.configure({
     appenders: [
@@ -17,6 +18,7 @@ log4js.configure({
 const logger = log4js.getLogger('cheese');
 logger.setLevel('INFO');
 
+app.use(compression())
 app.use(log4js.connectLogger(logger, { level: log4js.levels.INFO }));
 app.use(webpackDevMiddleware(compiler,{ noInfo : true, publicPath : config.output.publicPath}))
 app.use(webpackHotMiddleware(compiler))

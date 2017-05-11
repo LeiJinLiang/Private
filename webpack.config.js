@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -15,7 +16,12 @@ module.exports = {
     plugins : [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new uglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ],
     module : {
         loaders: [
@@ -23,9 +29,6 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader', // 'babel-loader' is also a legal name to reference
-                query: {
-                    presets: ['es2015']
-                }
             }
         ]
     }
