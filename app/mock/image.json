@@ -1,0 +1,9 @@
+{
+  "code":200,
+  "result" : [
+    { "url" : "http://wx2.sinaimg.cn/mw690/63299128gy1ffpt9nf43kj20p00gotj6.jpg"},
+    { "url" : "http://wx2.sinaimg.cn/mw690/63299128gy1ffpt9nf43kj20p00gotj6.jpg"},
+    { "url" : "http://wx2.sinaimg.cn/mw690/63299128gy1ffpt9nf43kj20p00gotj6.jpg"}
+  ],
+  "msg" : true
+}

@@ -54,10 +54,9 @@ class App extends Component {
             </span>
                     }
                     {!isFetching &&
-                    <a href="#"
-                       onClick={this.handleRefreshClick}>
+                    <button onClick={this.handleRefreshClick}>
                         Refresh
-                    </a>
+                    </button>
                     }
                 </p>
                 {isEmpty
@@ -90,4 +89,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(App)
+module.exports = connect(mapStateToProps)(App)

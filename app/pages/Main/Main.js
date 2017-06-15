@@ -11,10 +11,7 @@ class Main extends Component {
         return(
             <main>
                 <nav className= {styles.nav}>
-                    <div className= {styles.item}><Link to="/">Main-----</Link></div>
-                    <div className= {styles.item}><Link to="/calendar">calendar</Link></div>
-                    <div className= {styles.item}><Link to="/course/1">course</Link></div>
-                    <div className= {styles.item}><Link to="/course/1/list">list</Link></div>
+                    <div className= {styles.item}><Link to="/app">app</Link></div>
                 </nav>
                 <div>
                     {this.props.children }
