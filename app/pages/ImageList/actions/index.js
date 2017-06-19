@@ -18,11 +18,11 @@ const fetchPosts = (params) => dispatch => {
         .then(json => dispatch(receivePosts(json)))
 }
 
-export const receivePosts = (reddit) => {
+export const receivePosts = (list) => {
     return (
     {
         type: RECEIVE_POSTS,
-        reddit,
+        list,
         receivedAt: Date.now()
     }
     )

@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { fetchPostsIfNeeded } from '../actions'
 import List from '../components/List'
+import * as listAction from '../actions'
 
 class ListCon extends Component {
 
     componentDidMount() {
         const { dispatch } = this.props
-        dispatch(fetchPostsIfNeeded('edu_banner'))
+        this.props.actions.fetchPostsIfNeeded('edu_banner')
+        //dispatch(fetchPostsIfNeeded('edu_banner'))
     }
     render() {
-        const {recieveImages} = this.props
+        const {images} = this.props
         return(
             <div>
-                {recieveImages.result?<List images = {recieveImages.result}/>:'Empty'}
+                {images.result?<List images = {images.result}/>: 'Empty'}
             </div>
         )
     }
@@ -22,7 +25,14 @@ class ListCon extends Component {
 
 
 const mapStateToProps = state => {
-    return state
+    return { images : state.recieveImages}
 }
 
-module.exports = connect(mapStateToProps)(ListCon)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions : bindActionCreators(listAction,dispatch)
+    }
+}
+
+module.exports = connect(mapStateToProps,
+    mapDispatchToProps)(ListCon)

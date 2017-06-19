@@ -6,6 +6,7 @@ const List = ({images}) => (
         {images.map((post,i) =>
             <li key = {i}>{post.title}</li>
         )}
+        <button>+</button>
     </ul>
 )
 
