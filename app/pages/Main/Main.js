@@ -14,6 +14,7 @@ class Main extends Component {
                     <div className= {styles.item}><Link to="/app">app</Link></div>
                     <div className= {styles.item}><Link to="/image">image</Link></div>
                     <div className= {styles.item}><Link to="/demo">demo</Link></div>
+                    <div className= {styles.item}><Link to="/high">highorder</Link></div>
                 </nav>
                 <div>
                     {this.props.children }

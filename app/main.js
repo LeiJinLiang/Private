@@ -13,7 +13,8 @@ const rootRoute = {
         childRoutes : [
             require('./pages/Async'),
             require('./pages/ImageList'),
-            require('./pages/Demo')
+            require('./pages/Demo'),
+            require('./pages/HighOrder')
         ]
     } ]
 }
