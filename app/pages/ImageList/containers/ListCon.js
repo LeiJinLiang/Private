@@ -11,7 +11,6 @@ class ListCon extends Component {
     componentDidMount() {
         const { dispatch } = this.props
         this.props.actions.fetchPostsIfNeeded('edu_banner')
-        //dispatch(fetchPostsIfNeeded('edu_banner'))
     }
     render() {
         const {images} = this.props

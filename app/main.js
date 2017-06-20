@@ -12,7 +12,8 @@ const rootRoute = {
         component: require('./pages/Main/Main'),
         childRoutes : [
             require('./pages/Async'),
-            require('./pages/ImageList')
+            require('./pages/ImageList'),
+            require('./pages/Demo')
         ]
     } ]
 }
