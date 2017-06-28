@@ -10,3 +10,4 @@ gen
 .idea/
 cheese.log
 node_modules/
+dist/

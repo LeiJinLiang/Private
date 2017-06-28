@@ -14,6 +14,7 @@ class ListCon extends Component {
     }
     render() {
         const {images} = this.props
+        console.log('this.props',this.props)
         return(
             <div>
                 {images.result?<List images = {images.result}/>: 'Empty'}
